@@ -44,7 +44,12 @@ dispatcher.enqueue("send_email")
 
 ## Options and Settings
 
-| Name  | Default | Description     |
-| ----  | ------  | --------------  |
+### For the queue dispatcher
 
+```js
+queue.dispatcher({ 
+  create: true, // Will create a new queue every time its initialized, defaults to false
+  path: `./path/to/file.json` // path to the file that will store the queue
+})
+```
 
