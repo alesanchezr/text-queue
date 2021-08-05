@@ -2,6 +2,8 @@
 
 Extremelly simple text-based polling queue engine. Similar to RabbitMQ but simpler, text-based and unidirectional (polling protocol).
 
+![Text Based Queue](https://github.com/alesanchezr/text-queue/blob/main/preview.png?raw=true)
+
 ## What is this for?
 
 Is a simpler alternative to Socket.io with less restrictions.
