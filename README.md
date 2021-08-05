@@ -1,6 +1,6 @@
 # Text-Based-Queue
 
-Extremelly simple text-based polling queue engine. Similar to a socket but simpler, text-based and unidirectional (polling protocol).
+Extremelly simple text-based polling queue engine. Similar to RabbitMQ but simpler, text-based and unidirectional (polling protocol).
 
 ## What is this for?
 
