@@ -1,6 +1,13 @@
-# Text Queue
+# Text-Based-Queue
 
-Text-based queue management simplified
+Extremelly simple text-based polling queue engine. Similar to a socket but simpler, text-based and unidirectional (polling protocol).
+
+## What is this for?
+
+Is a simpler alternative to Socket.io with less restrictions.
+- Some times using sockets is impossible because of security or network limitations.
+- Faster than sockets
+- Persistent (if option.create = false the queue history will never be deleted)
 
 ## How to use
 
@@ -8,24 +15,27 @@ Text-based queue management simplified
 
 ```js
 // initialize your dispatcher
-const dispatcher = queue.dispatcher({ create: true, path: `./path/to/file/vscode_queue.json` })
+const dispatcher = queue.dispatcher({ create: true, path: `./path/to/file.json` })
 
+//you can send any data as event payload
+let data = { foo: "bar" }
 // start enqueing/dispatching any events
-dispatcher.enqueue("initilialized", req.params.slug)
+dispatcher.enqueue("initilialized", data)
 
 
 // dispatch any other custom event you want
-dispatcher.enqueue("send_email", req.params.slug)
+dispatcher.enqueue("send_email")
 ```
 
 
 2. Listening to incoming events from the queue:
 
 ```js
-  //initialize your listener
-  let listener = queue.listener({ path: `./path/to/file/vscode_queue.json` })
+  //initialize your queue listener
+  const listener = queue.listener({ path: `./path/to/file.json` })
   
-  // when a new event is added to the queue, the onPull method will be triggered
+  // when a new event is added to the queue, the onPull method will be triggered 
+  // and you receive the incoming event name and the payload/data
   listener.onPull((e) => console.log(`Incoming event with name ${e.name}`, e.data))
   
   // if the queue file gets deleted or reseted we can also listen and receive any queued events
