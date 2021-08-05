@@ -41,3 +41,10 @@ dispatcher.enqueue("send_email")
   // if the queue file gets deleted or reseted we can also listen and receive any queued events
   listener.onReset((e) => console.log(`Incoming event with name ${e.name}`, e.data))
 ```
+
+## Options and Settings
+
+| Name  | Default | Description     |
+| ----  | ------  | --------------  |
+
+
