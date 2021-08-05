@@ -8,10 +8,14 @@ Text-based queue management simplified
 
 ```js
 // initialize your dispatcher
-const dispatcher = queue.dispatcher({ create: true, path: `${config.dirPath}/vscode_queue.json` })
+const dispatcher = queue.dispatcher({ create: true, path: `./path/to/file/vscode_queue.json` })
 
 // start enqueing/dispatching any events
-dispatcher.enqueue(dispatcher.events.START_EXERCISE, req.params.slug)
+dispatcher.enqueue("initilialized", req.params.slug)
+
+
+// dispatch any other custom event you want
+dispatcher.enqueue("send_email", req.params.slug)
 ```
 
 
@@ -19,7 +23,7 @@ dispatcher.enqueue(dispatcher.events.START_EXERCISE, req.params.slug)
 
 ```js
   //initialize your listener
-  let listener = queue.listener({ path: `${extension.workspaceRoot}/${configFile.config.dirPath || ".learn"}/vscode_queue.json` })
+  let listener = queue.listener({ path: `./path/to/file/vscode_queue.json` })
   
   // when a new event is added to the queue, the onPull method will be triggered
   listener.onPull((e) => console.log(`Incoming event with name ${e.name}`, e.data))
